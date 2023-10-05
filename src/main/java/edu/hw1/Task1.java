@@ -5,8 +5,9 @@ public class Task1 {
     private final static int SECONDS_IN_MINUTE = 60;
 
     int minutesToSeconds(String videoLength) {
-        String[] split = videoLength.split(":");
-        if (split.length != 2) {
+        String[] split = (videoLength == null) ? null : videoLength.split(":");
+
+        if (split == null || split.length != 2) {
             return ERROR_CODE;
         }
 
