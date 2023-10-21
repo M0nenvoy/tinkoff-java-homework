@@ -14,18 +14,10 @@ public class Rectangle {
     }
 
     Rectangle setWidth(int width) {
-        if (width == this.height) {
-            return new Square(this.width);
-        }
-
         return new Rectangle(width, this.height);
     }
 
     Rectangle setHeight(int height) {
-        if (height == this.width) {
-            return new Square(this.width);
-        }
-
         return new Rectangle(this.width, height);
     }
 
