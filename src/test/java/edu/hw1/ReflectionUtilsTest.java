@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-public class Task4Test {
+public class ReflectionUtilsTest {
     Task4 task;
 
     @BeforeEach

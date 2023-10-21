@@ -1,16 +1,16 @@
-package edu.hw2;
+package edu.hw2.Task4;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class Task4Test {
+public class WhoCalledTest {
     @DisplayName("whoCalled - Имя класса")
     @Test
     void whoCalledClassName() {
         class Dummy {
             public CallingInfo call() {
-                return Task4.whoCalled();
+                return ReflectionUtils.whoCalled();
             }
         }
 
@@ -25,7 +25,7 @@ public class Task4Test {
     void whoCalledMethodName() {
         class Dummy {
             public CallingInfo call() {
-                return Task4.whoCalled();
+                return ReflectionUtils.whoCalled();
             }
         }
 
