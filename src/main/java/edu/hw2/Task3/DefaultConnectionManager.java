@@ -5,6 +5,7 @@ import java.util.Random;
 public class DefaultConnectionManager implements ConnectionManager {
     private static final float FAULTY_CONNECTION_CHANCE = 0.5f;
     private final float faultyChance;
+
     DefaultConnectionManager(float faultyChance) {
         this.faultyChance = faultyChance;
     }
