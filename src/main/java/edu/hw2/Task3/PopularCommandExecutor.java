@@ -1,7 +1,11 @@
 package edu.hw2.Task3;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public final class PopularCommandExecutor {
     private final ConnectionManager manager;
+    private final static Logger LOGGER = LogManager.getLogger();
     private final int maxAttempts;
 
     PopularCommandExecutor(ConnectionManager manager, int maxAttempts) {
@@ -14,21 +18,21 @@ public final class PopularCommandExecutor {
     }
 
     void tryExecute(String command) {
-        var con = manager.getConnection();
         Exception lastException = null;
-        for (int i = 0; i < maxAttempts; ++i) {
-            try {
-                con.execute(command);
-                con.close();
-                return;
-            } catch (Exception e) {
-                lastException = e;
+        try (var con = manager.getConnection()) {
+            for (int i = 0; i < maxAttempts; ++i) {
+                try {
+                    con.execute(command);
+                    con.close();
+                    return;
+                } catch (Exception e) {
+                    lastException = e;
+                }
             }
+        } catch (Exception e) {
+            LOGGER.info("Ошибка при использовании подключения: {}", e.getMessage());
         }
-        try {
-            con.close();
-        } catch (Exception ignored) {
-        }
+
         throw new ConnectionException("Выполнено максимальное число попыток", lastException);
     }
 }
