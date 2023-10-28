@@ -1,6 +1,7 @@
 package edu.hw3.Task5;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class ContactProcessor {
@@ -27,6 +28,14 @@ public class ContactProcessor {
                 result.add(new Contact(split[0], split[1]));
             }
         }
-        return result;
+        return result
+            .stream()
+            .sorted(
+                Comparator.comparing(
+                    c -> ((Contact)c).getSurname() != null ? ((Contact)c).getSurname() : ""
+                ).thenComparing(
+                    c -> ((Contact)c).getName()
+                )
+            ).toList();
     }
 }

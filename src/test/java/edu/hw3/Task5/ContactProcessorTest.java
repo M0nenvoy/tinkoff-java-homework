@@ -36,9 +36,9 @@ public class ContactProcessorTest {
             )))
             .usingRecursiveFieldByFieldElementComparator()
             .containsExactly(
-                new Contact("Stanislav"),
+                new Contact("Cole"),
                 new Contact("Ivan"),
-                new Contact("Cole")
+                new Contact("Stanislav")
             );
     }
 
