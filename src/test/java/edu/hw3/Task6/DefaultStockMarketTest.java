@@ -8,6 +8,7 @@ import java.util.Comparator;
 
 public class DefaultStockMarketTest {
     DefaultStockMarket market;
+    private static final Comparator<Stock> stockCompare = Comparator.comparing(Stock::getId).thenComparing(Stock::getPrice);
     @BeforeEach
     void prepareMarket() {
         market = new DefaultStockMarket();
@@ -22,7 +23,7 @@ public class DefaultStockMarketTest {
 
         Assertions
             .assertThat(market.mostValuableStock())
-            .usingComparator(Comparator.comparing(Stock::getId).thenComparing(Stock::getPrice))
+            .usingComparator(stockCompare)
             .isEqualTo(new Stock(2, 200));
     }
 
@@ -31,5 +32,20 @@ public class DefaultStockMarketTest {
     void noStocks() {
         Assertions
             .assertThat(market.mostValuableStock()).isNull();
+    }
+
+    @DisplayName("Удаление")
+    @Test
+    void removeStock() {
+        var removed = new Stock(1, 200);
+        market.add(removed);
+        market.add(new Stock(2, 100));
+
+        market.remove(removed);
+
+        Assertions
+            .assertThat(market.mostValuableStock())
+            .usingComparator(stockCompare)
+            .isEqualTo(new Stock(2, 100));
     }
 }
