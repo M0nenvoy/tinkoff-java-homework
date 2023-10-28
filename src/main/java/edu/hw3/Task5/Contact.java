@@ -1,8 +1,8 @@
 package edu.hw3.Task5;
 
 public class Contact {
-    private String name;
-    private String surname;
+    private final String name;
+    private final String surname;
 
     Contact(String name, String surname) {
         this.name = name;

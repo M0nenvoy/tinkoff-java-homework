@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class DefaultStockMarket implements StockMarket {
-    private PriorityQueue<Stock> stocks;
+    private final PriorityQueue<Stock> stocks;
 
     DefaultStockMarket() {
         this.stocks = new PriorityQueue<>(
