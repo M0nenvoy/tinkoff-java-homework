@@ -4,14 +4,19 @@ public class RomanConverter {
     private static final int THOUSAND = 1000;
     private static final int HUNDRED = 100;
     private static final int TEN = 10;
+    private static final int MAXIMUM_REPRESENTABLE = 3999;
 
     private RomanConverter() {
 
     }
 
     public static String convertToRoman(int x) {
-        if (x == 0) {
-            throw new IllegalArgumentException("Невозможно представить 0");
+        if (x <= 0) {
+            throw new IllegalArgumentException("Невозможно представить неположительное значение");
+        }
+
+        if (x > MAXIMUM_REPRESENTABLE) {
+            throw new IllegalArgumentException("Невозможно представить значение больше 3999");
         }
 
         String[] ones = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};

@@ -24,6 +24,19 @@ public class RomanConverterTest {
     void convertToRomanZeroExceptionThrown() {
         Assertions.assertThatThrownBy(() -> RomanConverter.convertToRoman(0))
             .isInstanceOf(IllegalArgumentException.class);
+    }
 
+    @DisplayName("convertToRoman - Отрицательное число. Бросается исключение")
+    @Test
+    void convertRomanNegativeExceptionThrown() {
+        Assertions.assertThatThrownBy(() -> RomanConverter.convertToRoman(-1))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("convertToRoman - Слишком большое число. Бросается исключение")
+    @Test
+    void convertRomanTooLargeValue() {
+        Assertions.assertThatThrownBy(() -> RomanConverter.convertToRoman(4000))
+            .isInstanceOf(IllegalArgumentException.class);
     }
 }
