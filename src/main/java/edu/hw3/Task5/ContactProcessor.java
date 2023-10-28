@@ -32,9 +32,9 @@ public class ContactProcessor {
             .stream()
             .sorted(
                 Comparator.comparing(
-                    c -> ((Contact)c).getSurname() != null ? ((Contact)c).getSurname() : ""
+                    c -> ((Contact) c).getSurname() != null ? ((Contact) c).getSurname() : ""
                 ).thenComparing(
-                    c -> ((Contact)c).getName()
+                    c -> ((Contact) c).getName()
                 )
             ).toList();
     }
