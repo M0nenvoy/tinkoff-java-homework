@@ -1,9 +1,8 @@
 package edu.project2;
 
-import jdk.jfr.TransitionFrom;
+import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import java.util.List;
 
 public final class Main {
     private final static int HEIGHT = 8;
@@ -11,8 +10,8 @@ public final class Main {
     private final static Coord FROM = new Coord(0, 0);
     private final static Coord TO = new Coord(WIDTH - 1, HEIGHT - 1);
     private final static Logger LOGGER = LogManager.getLogger();
-    private Main(){
 
+    private Main() {
     }
 
     public static void main(String[] args) {

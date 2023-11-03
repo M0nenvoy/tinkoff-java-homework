@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test;
 import java.util.Map;
 
 public class RecursiveBacktrackingMazeSolverTest {
-    private final static Logger LOGGER = LogManager.getLogger();
     RecursiveBacktrackingMazeSolver solver;
 
     @BeforeEach
@@ -51,23 +50,19 @@ public class RecursiveBacktrackingMazeSolverTest {
             new Coord(2, 1), Cell.fromDirection(LEFT).addDirection(UP)
         ));
 
-        assertThatCode(() -> {
-            assertThat(solver.solve(maze, new Coord(0, 0), new Coord(2, 1)))
-                .containsExactly(
-                    new Coord(2, 1),
-                    new Coord(1, 1),
-                    new Coord(0, 1),
-                    new Coord(0, 0)
-                );
-        }).doesNotThrowAnyException();
+        assertThatCode(() -> assertThat(solver.solve(maze, new Coord(0, 0), new Coord(2, 1)))
+            .containsExactly(
+                new Coord(2, 1),
+                new Coord(1, 1),
+                new Coord(0, 1),
+                new Coord(0, 0)
+            )).doesNotThrowAnyException();
     }
 
     @DisplayName("Нахождение маршрута вне допустимых границ")
     @Test
     void outOfBoundsSolve() {
         var maze = new Maze(9, 9);
-        assertThatThrownBy(() -> {
-            solver.solve(maze, new Coord(100, 100), new Coord(-1, -1));
-        });
+        assertThatThrownBy(() -> solver.solve(maze, new Coord(100, 100), new Coord(-1, -1)));
     }
 }

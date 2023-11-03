@@ -92,22 +92,18 @@ public class Maze {
             case DOWN -> {
                 this.setCell(from, cFrom.addDirection(Coord.Direction.DOWN));
                 this.setCell(to, cTo.addDirection(Coord.Direction.UP));
-                break;
             }
             case UP -> {
                 this.setCell(from, cFrom.addDirection(Coord.Direction.UP));
                 this.setCell(to, cTo.addDirection(Coord.Direction.DOWN));
-                break;
             }
             case RIGHT -> {
                 this.setCell(from, cFrom.addDirection(Coord.Direction.RIGHT));
                 this.setCell(to, cTo.addDirection(Coord.Direction.LEFT));
-                break;
             }
             case LEFT -> {
                 this.setCell(from, cFrom.addDirection(Coord.Direction.LEFT));
                 this.setCell(to, cTo.addDirection(Coord.Direction.RIGHT));
-                break;
             }
             default -> throw new IllegalStateException("Не реализовано");
         }
